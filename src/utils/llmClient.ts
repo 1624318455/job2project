@@ -14,11 +14,21 @@ export function resolveBaseUrl(model?: string): string | undefined {
 }
 
 function createLLM(apiKey?: string, model?: string, opts?: { maxTokens?: number }) {
+  const resolvedModel = model || process.env.OPENAI_MODEL || 'gpt-4o';
+  const resolvedBaseUrl = resolveBaseUrl(resolvedModel);
+  
+  console.log('[createLLM] Creating LLM with:', {
+    model: resolvedModel,
+    baseUrl: resolvedBaseUrl,
+    hasApiKey: !!apiKey,
+    keyPrefix: apiKey?.substring(0, 10) || 'none'
+  });
+  
   return new ChatOpenAI({
     apiKey: apiKey || process.env.OPENAI_API_KEY || '',
-    model: model || process.env.OPENAI_MODEL || 'gpt-4o',
+    model: resolvedModel,
     configuration: {
-      baseURL: resolveBaseUrl(model || process.env.OPENAI_MODEL),
+      baseURL: resolvedBaseUrl,
       timeout: 120_000,
       maxRetries: 2,
     },

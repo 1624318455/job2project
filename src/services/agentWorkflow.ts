@@ -51,7 +51,7 @@ async function saveDecision(taskId: string, decision: Decision) {
 }
 
 async function analyzeNode(state: AgentState): Promise<AgentState> {
-  console.log('Analyzing job description...');
+  console.log('[analyzeNode] Starting analysis for task:', state.taskId, 'with model:', state.openaiModel);
   await updateTaskStatus(state.taskId, 'analyzing');
 
   try {
@@ -60,9 +60,10 @@ async function analyzeNode(state: AgentState): Promise<AgentState> {
       state.openaiApiKey,
       state.openaiModel
     );
+    console.log('[analyzeNode] Analysis result:', JSON.stringify(analysis).substring(0, 200));
     return { ...state, analysis };
   } catch (error) {
-    console.error('Analysis error:', error);
+    console.error('[analyzeNode] Analysis error:', error);
     return {
       ...state,
       error: error instanceof Error ? error.message : 'Analysis failed',
@@ -275,6 +276,8 @@ export async function runAgentWorkflow(
     vercelToken?: string;
   }
 ) {
+  console.log('[runAgentWorkflow] Received request:', { taskId, jobDescriptionLength: jobDescription?.length, apiKeys: { hasApiKey: !!apiKeys?.openaiApiKey, model: apiKeys?.openaiModel } });
+  
   let state: AgentState = {
     taskId,
     jobDescription,
