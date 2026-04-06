@@ -1,0 +1,6 @@
+[   13157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://job2project.vercel.app/settings:0
+[   13157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://job2project.vercel.app/settings:0
+[   13157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ https://job2project.vercel.app/settings:0
+[   71538ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ https://job2project.vercel.app/api/agent/start:0
+[   71539ms] [ERROR] Submit error: Error: Internal server error
+    at g (https://job2project.vercel.app/_next/static/chunks/0ymqn_v5awjpk.js:1:128875) @ https://job2project.vercel.app/_next/static/chunks/0ymqn_v5awjpk.js:0

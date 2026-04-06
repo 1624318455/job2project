@@ -1,0 +1,35 @@
+- generic [active] [ref=e1]:
+  - alert [ref=e44]
+  - generic [ref=e135]:
+    - banner [ref=e136]:
+      - generic [ref=e137]:
+        - img [ref=e139]
+        - heading "Job2Project" [level=1] [ref=e141]
+        - generic [ref=e142]: AI Agent智能体应用
+      - navigation [ref=e143]:
+        - button "设置" [ref=e144] [cursor=pointer]:
+          - img [ref=e145]
+        - link "历史任务" [ref=e148] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e149]:
+      - generic [ref=e151]:
+        - img [ref=e153]
+        - heading "欢迎使用 Job2Project" [level=2] [ref=e155]
+        - paragraph [ref=e156]: 发送前端开发工程师的岗位描述，AI Agent将自动分析需求并生成完整的项目代码。
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e159]: 支持多模态输入
+            - paragraph [ref=e160]: 粘贴文本或上传招聘截图
+          - generic [ref=e161]:
+            - generic [ref=e162]: 智能决策引擎
+            - paragraph [ref=e163]: 自动选择最佳项目类型
+          - generic [ref=e164]:
+            - generic [ref=e165]: 一键部署预览
+            - paragraph [ref=e166]: Web项目自动部署到Vercel
+    - contentinfo [ref=e167]:
+      - generic [ref=e170]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e172]
+        - generic [ref=e173]:
+          - img [ref=e175] [cursor=pointer]
+          - button [disabled] [ref=e177]:
+            - img [ref=e178]

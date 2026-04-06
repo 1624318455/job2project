@@ -1,0 +1,104 @@
+- generic [ref=e1]:
+  - alert [ref=e44]
+  - generic [ref=e45]:
+    - banner [ref=e46]:
+      - generic [ref=e47]:
+        - button "返回" [ref=e48] [cursor=pointer]:
+          - img [ref=e49]
+          - text: 返回
+        - heading "设置" [level=1] [ref=e51]
+    - main [ref=e52]:
+      - generic [ref=e54]:
+        - img [ref=e55]
+        - generic [ref=e57]: API 已配置完成，可以开始使用
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - img [ref=e61]
+          - generic [ref=e63]:
+            - heading "大模型配置" [level=2] [ref=e64]
+            - paragraph [ref=e65]: 选择 LLM 提供商和模型
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: 提供商
+            - combobox [ref=e69] [cursor=pointer]:
+              - option "OpenAI"
+              - option "智谱 GLM" [selected]
+              - option "阿里云 通义"
+              - option "DeepSeek"
+              - option "月之暗面 Kimi"
+              - option "Anthropic Claude"
+              - option "Google Gemini"
+              - option "硅基流动"
+          - generic [ref=e70]:
+            - generic [ref=e71]: 模型
+            - combobox [ref=e72] [cursor=pointer]:
+              - option "GLM-4.7-Flash （免费） - 主力免费，强烈推荐"
+              - option "GLM-4-Flash （免费） - 速度快，性价比高" [selected]
+              - option "GLM-4.5-Flash （免费） - 已下线，自动路由至4.7"
+              - option "GLM-4-FlashX - 超快推理，付费"
+              - option "GLM-4-Plus - 增强版，付费"
+              - option "GLM-4 - 标准版，付费"
+              - option "GLM-4-Air - 低价高效"
+              - option "GLM-4-AirX - Air增强版"
+              - option "GLM-4V - 多模态视觉"
+          - generic [ref=e73]:
+            - generic [ref=e74]: API Key *
+            - textbox "请输入 API Key" [ref=e75]: 8ec0739d534540b4ad4e36ed1f5d1cb6.KLyPOylmIPZOPj9D
+            - paragraph [ref=e76]: 此模型提供免费额度
+            - link "获取密钥 →" [ref=e77] [cursor=pointer]:
+              - /url: https://open.bigmodel.cn/usercenter/apikeys
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - img [ref=e81]
+          - generic [ref=e83]:
+            - heading "Tavily Search" [level=2] [ref=e84]
+            - paragraph [ref=e85]: 用于搜索技术趋势和市场需求（可选）
+          - link "获取密钥 →" [ref=e86] [cursor=pointer]:
+            - /url: https://tavily.com
+        - generic [ref=e87]:
+          - generic [ref=e88]: API Key
+          - textbox "tvly-xxxxxxxxxxxxxxxxxxxxxxxx" [ref=e89]: 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
+          - paragraph [ref=e90]: 免费额度：每月 1000 次搜索
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - img [ref=e94]
+          - generic [ref=e96]:
+            - heading "Vercel 部署" [level=2] [ref=e97]
+            - paragraph [ref=e98]: 生成完成后自动部署到 Vercel（可选）
+          - link "获取 Token →" [ref=e99] [cursor=pointer]:
+            - /url: https://vercel.com/account/tokens
+        - generic [ref=e100]:
+          - generic [ref=e101]: API Token
+          - textbox "填写 Vercel API Token 开启自动部署" [ref=e102]
+          - paragraph [ref=e103]: 填写后生成的项目将自动部署，获得真实预览链接
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - img [ref=e107]
+          - generic [ref=e109]:
+            - heading "图片识别（OCR）" [level=2] [ref=e110]
+            - paragraph [ref=e111]: 上传招聘截图自动提取文字
+        - generic [ref=e112]:
+          - paragraph [ref=e113]: • 使用大模型自带的视觉能力识别图片文字
+          - paragraph [ref=e114]:
+            - text: • 智谱 GLM 用户会自动切换到
+            - code [ref=e115]: glm-4v
+            - text: 模型
+          - paragraph [ref=e116]:
+            - text: • OpenAI 用户会自动切换到
+            - code [ref=e117]: gpt-4o
+            - text: 模型
+          - paragraph [ref=e118]: • 无需额外配置，上传即可使用
+      - generic [ref=e119]:
+        - checkbox "显示密钥" [ref=e120] [cursor=pointer]
+        - generic [ref=e121] [cursor=pointer]: 显示密钥
+      - generic [ref=e122]:
+        - button "已保存 ✓" [active] [ref=e133] [cursor=pointer]
+        - button "清除配置" [ref=e124] [cursor=pointer]
+        - button "返回主页 →" [ref=e125] [cursor=pointer]
+      - generic [ref=e126]:
+        - heading "安全说明" [level=3] [ref=e127]
+        - list [ref=e128]:
+          - listitem [ref=e129]: • API 密钥仅存储在您的浏览器本地（localStorage）
+          - listitem [ref=e130]: • 密钥不会上传到任何服务器
+          - listitem [ref=e131]: • 清除浏览器数据会丢失配置
+          - listitem [ref=e132]: • 请勿在公共电脑上保存密钥
