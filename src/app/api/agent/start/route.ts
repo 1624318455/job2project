@@ -54,7 +54,18 @@ export async function POST(request: NextRequest) {
     const taskId = uuidv4();
     const anonymousUserId = uuidv4();
 
-    await createTask(taskId, anonymousUserId, jobDescription);
+    console.log('[agent/start] Creating task:', taskId);
+    try {
+      await createTask(taskId, anonymousUserId, jobDescription);
+      console.log('[agent/start] Task created successfully');
+    } catch (taskError) {
+      console.error('[agent/start] Failed to create task:', taskError);
+      return NextResponse.json<ApiResponse>({
+        code: 500,
+        message: 'Failed to create task',
+        error: taskError instanceof Error ? taskError.message : 'Database error'
+      }, { status: 500 });
+    }
 
     startAgentWorkflow(taskId, jobDescription, {
       openaiApiKey,

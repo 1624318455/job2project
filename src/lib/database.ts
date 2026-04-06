@@ -43,11 +43,17 @@ function getPool(): Pool | null {
     return null;
   }
 
+  console.log('[db] Creating pool, connection string starts with:', connectionString.substring(0, 30));
+  
   pool = new Pool({
     connectionString,
     ssl: { rejectUnauthorized: false },
     max: 10,
     idleTimeoutMillis: 30000,
+  });
+
+  pool.on('error', (err) => {
+    console.error('[db] Pool error:', err.message);
   });
 
   initializeDatabase(pool).catch(console.error);
