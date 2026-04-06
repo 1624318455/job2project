@@ -1,6 +1,11 @@
-import { query, execute } from '@/lib/database';
+import { query, execute, getPool } from '@/lib/database';
 
 export async function createTask(id: string, userId: string, jobDescription: string) {
+  const pool = getPool();
+  if (!pool) {
+    throw new Error('Database not available');
+  }
+  
   return execute(
     `INSERT INTO tasks (id, user_id, job_description, status) VALUES ($1, $2, $3, 'pending')`,
     [id, userId, jobDescription]
