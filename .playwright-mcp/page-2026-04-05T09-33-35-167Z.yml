@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e48] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e49]:
+      - img [ref=e50]
+    - generic [ref=e161]:
+      - button "Open issues overlay" [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]: "0"
+          - generic [ref=e165]: "1"
+        - generic [ref=e166]: Issue
+      - button "Collapse issues badge" [ref=e167]:
+        - img [ref=e168]
+  - alert [ref=e53]
+  - generic [ref=e116]:
+    - banner [ref=e117]:
+      - generic [ref=e118]:
+        - img [ref=e120]
+        - heading "Job2Project" [level=1] [ref=e122]
+        - generic [ref=e123]: AI Agent智能体应用
+      - navigation [ref=e124]:
+        - button "设置" [ref=e125] [cursor=pointer]:
+          - img [ref=e126]
+        - link "历史任务" [ref=e129] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e130]:
+      - generic [ref=e170]:
+        - generic [ref=e172]:
+          - paragraph [ref=e174]: 招聘前端开发工程师，要求精通React、TypeScript、TailwindCSS，有3年以上经验，熟悉Next.js优先。
+          - generic [ref=e175]: 17:33
+        - generic [ref=e177]:
+          - paragraph [ref=e179]: 提交失败：Failed to create task
+          - generic [ref=e180]: 17:33
+    - contentinfo [ref=e148]:
+      - generic [ref=e151]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e153]
+        - generic [ref=e154]:
+          - img [ref=e156] [cursor=pointer]
+          - button [disabled] [ref=e158]:
+            - img [ref=e159]

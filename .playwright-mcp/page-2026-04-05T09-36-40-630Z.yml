@@ -1,0 +1,30 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e57]:
+        - generic [ref=e59]:
+          - paragraph [ref=e61]: 招聘前端开发工程师，要求精通React、TypeScript、TailwindCSS，有3年以上经验，熟悉Next.js优先。
+          - generic [ref=e62]: 17:36
+        - generic [ref=e64]:
+          - paragraph [ref=e66]: 任务执行失败，请检查API密钥配置或重试。
+          - generic [ref=e67]: 17:36
+    - contentinfo [ref=e34]:
+      - generic [ref=e37]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e39]
+        - generic [ref=e40]:
+          - img [ref=e42] [cursor=pointer]
+          - button [disabled] [ref=e44]:
+            - img [ref=e45]
+  - button "Open Next.js Dev Tools" [ref=e52] [cursor=pointer]:
+    - img [ref=e53]
+  - alert [ref=e56]

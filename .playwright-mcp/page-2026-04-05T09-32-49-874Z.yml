@@ -1,0 +1,77 @@
+- generic [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e49] [cursor=pointer]:
+    - img [ref=e50]
+  - alert [ref=e53]
+  - generic [ref=e54]:
+    - banner [ref=e55]:
+      - generic [ref=e56]:
+        - button "返回" [ref=e57] [cursor=pointer]:
+          - img [ref=e58]
+          - text: 返回
+        - heading "设置" [level=1] [ref=e60]
+    - main [ref=e61]:
+      - generic [ref=e63]:
+        - img [ref=e64]
+        - generic [ref=e66]: 请配置必要的 API 密钥
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - img [ref=e70]
+          - generic [ref=e72]:
+            - heading "大模型配置" [level=2] [ref=e73]
+            - paragraph [ref=e74]: 选择 LLM 提供商和模型
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]: 提供商
+            - combobox [ref=e78] [cursor=pointer]:
+              - option "OpenAI"
+              - option "智谱 GLM" [selected]
+              - option "阿里云 通义"
+              - option "DeepSeek"
+              - option "月之暗面 Kimi"
+              - option "Anthropic Claude"
+              - option "Google Gemini"
+              - option "硅基流动"
+          - generic [ref=e79]:
+            - generic [ref=e80]: 模型
+            - combobox [ref=e81] [cursor=pointer]:
+              - option "GLM-4.7-Flash （免费） - 主力免费，强烈推荐" [selected]
+              - option "GLM-4-Flash （免费） - 速度快，性价比高"
+              - option "GLM-4.5-Flash （免费） - 已下线，自动路由至4.7"
+              - option "GLM-4-FlashX - 超快推理，付费"
+              - option "GLM-4-Plus - 增强版，付费"
+              - option "GLM-4 - 标准版，付费"
+              - option "GLM-4-Air - 低价高效"
+              - option "GLM-4-AirX - Air增强版"
+              - option "GLM-4V - 多模态视觉"
+          - generic [ref=e82]:
+            - generic [ref=e83]: API Key *
+            - textbox "请输入 API Key" [ref=e85]: test-glm-api-key-12345
+            - paragraph [ref=e86]: 此模型提供免费额度
+            - link "获取密钥 →" [ref=e87] [cursor=pointer]:
+              - /url: https://open.bigmodel.cn/usercenter/apikeys
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - img [ref=e91]
+          - generic [ref=e93]:
+            - heading "Tavily Search" [level=2] [ref=e94]
+            - paragraph [ref=e95]: 用于搜索技术趋势和市场需求（可选）
+          - link "获取密钥 →" [ref=e96] [cursor=pointer]:
+            - /url: https://tavily.com
+        - generic [ref=e97]:
+          - generic [ref=e98]: API Key
+          - textbox "tvly-xxxxxxxxxxxxxxxxxxxxxxxx" [ref=e99]
+          - paragraph [ref=e100]: 免费额度：每月 1000 次搜索
+      - generic [ref=e101]:
+        - checkbox "显示密钥" [ref=e102] [cursor=pointer]
+        - generic [ref=e103] [cursor=pointer]: 显示密钥
+      - generic [ref=e104]:
+        - button "已保存 ✓" [active] [ref=e115] [cursor=pointer]
+        - button "清除配置" [ref=e106] [cursor=pointer]
+        - button "返回主页 →" [ref=e107] [cursor=pointer]
+      - generic [ref=e108]:
+        - heading "安全说明" [level=3] [ref=e109]
+        - list [ref=e110]:
+          - listitem [ref=e111]: • API 密钥仅存储在您的浏览器本地（localStorage）
+          - listitem [ref=e112]: • 密钥不会上传到任何服务器
+          - listitem [ref=e113]: • 清除浏览器数据会丢失配置
+          - listitem [ref=e114]: • 请勿在公共电脑上保存密钥

@@ -1,0 +1,38 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "配置API" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+          - generic [ref=e14]: 配置API
+        - button "设置" [ref=e15] [cursor=pointer]:
+          - img [ref=e16]
+        - link "历史任务" [ref=e19] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e20]:
+      - generic [ref=e22]:
+        - img [ref=e24]
+        - heading "欢迎使用 Job2Project" [level=2] [ref=e26]
+        - paragraph [ref=e27]: 发送前端开发工程师的岗位描述，AI Agent将自动分析需求并生成完整的项目代码。
+        - button "先配置 API 密钥 →" [ref=e28] [cursor=pointer]
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: 支持多模态输入
+            - paragraph [ref=e32]: 粘贴文本或上传招聘截图
+          - generic [ref=e33]:
+            - generic [ref=e34]: 智能决策引擎
+            - paragraph [ref=e35]: 自动选择最佳项目类型
+          - generic [ref=e36]:
+            - generic [ref=e37]: 一键部署预览
+            - paragraph [ref=e38]: Web项目自动部署到Vercel
+    - contentinfo [ref=e39]:
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: 请先配置 API 密钥才能使用
+        - button "前往设置 →" [ref=e43] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e49] [cursor=pointer]:
+    - img [ref=e50]
+  - alert [ref=e53]
