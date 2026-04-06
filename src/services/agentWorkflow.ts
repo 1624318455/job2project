@@ -1,7 +1,7 @@
 import { analyzeJobDescription, generateProjectSpec, generateCode } from '@/utils/llmClient';
 import { searchJobMarketTrends, summarizeSearchResults } from '@/utils/searchClient';
 import { Decision, ProjectMetadata, TaskStatus } from '@/types';
-import { updateTaskStatus, updateTaskMetadata } from '@/lib/tasks';
+import { updateTaskStatus, updateTaskMetadata, saveProjectCode } from '@/lib/tasks';
 
 declare global {
   // eslint-disable-next-line no-var
@@ -174,6 +174,8 @@ async function generateNode(state: AgentState): Promise<AgentState> {
     console.log('[generateNode] Generated', Object.keys(projectCode).length, 'files for task', state.taskId);
 
     setGeneratedCode(state.taskId, projectCode);
+    await saveProjectCode(state.taskId, projectCode);
+    console.log('[generateNode] Saved project code to database');
 
     return { ...state, projectCode };
   } catch (error) {

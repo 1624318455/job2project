@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - link "返回" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img [ref=e10]
+          - text: 返回
+        - heading "历史任务" [level=1] [ref=e12]
+    - main [ref=e13]:
+      - generic [ref=e16] [cursor=pointer]:
+        - generic [ref=e18]:
+          - generic [ref=e20]: 生成中
+          - paragraph [ref=e21]: 创建一个简单的React计数器应用
+        - generic [ref=e23]: 2026/04/06 23:18
+  - alert [ref=e6]

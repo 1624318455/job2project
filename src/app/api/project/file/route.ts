@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getGeneratedCode } from '@/services/agentWorkflow';
+import { getProjectCode } from '@/lib/tasks';
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,7 +12,11 @@ export async function GET(request: NextRequest) {
       return new NextResponse('Missing task_id or file parameter', { status: 400 });
     }
 
-    const projectCode = getGeneratedCode(taskId);
+    let projectCode = getGeneratedCode(taskId);
+    
+    if (!projectCode || !projectCode[file]) {
+      projectCode = await getProjectCode(taskId);
+    }
 
     if (!projectCode || !projectCode[file]) {
       return new NextResponse('File not found', { status: 404 });

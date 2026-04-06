@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { ApiResponse } from '@/types';
 import { getTask } from '@/lib/tasks';
 import { getGeneratedCode } from '@/services/agentWorkflow';
+import { getProjectCode } from '@/lib/tasks';
 import AdmZip from 'adm-zip';
 
 export async function GET(request: NextRequest) {
@@ -35,13 +36,18 @@ export async function GET(request: NextRequest) {
       }, { status: 400 });
     }
 
-    const projectCode = getGeneratedCode(taskId);
+    let projectCode = getGeneratedCode(taskId);
+    
+    if (!projectCode || Object.keys(projectCode).length === 0) {
+      console.log('[download] Memory cache empty, trying database...');
+      projectCode = await getProjectCode(taskId);
+    }
 
     if (!projectCode || Object.keys(projectCode).length === 0) {
       return NextResponse.json<ApiResponse>({
         code: 404,
         message: 'No generated code available',
-        error: 'The generated code is no longer available in memory'
+        error: 'The generated code is no longer available'
       }, { status: 404 });
     }
 
