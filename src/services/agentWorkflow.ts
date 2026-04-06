@@ -285,22 +285,29 @@ export async function runAgentWorkflow(
   };
 
   try {
+    console.log('[runAgentWorkflow] Starting workflow for task:', taskId);
     state = await analyzeNode(state);
+    console.log('[runAgentWorkflow] analyzeNode completed');
     if (state.error) throw new Error(state.error);
 
     state = await searchNode(state);
+    console.log('[runAgentWorkflow] searchNode completed');
     if (state.error) throw new Error(state.error);
 
     state = await decideNode(state);
+    console.log('[runAgentWorkflow] decideNode completed');
     if (state.error) throw new Error(state.error);
 
     state = await generateNode(state);
+    console.log('[runAgentWorkflow] generateNode completed');
     if (state.error) throw new Error(state.error);
 
     state = await deployNode(state);
+    console.log('[runAgentWorkflow] deployNode completed');
     if (state.error) throw new Error(state.error);
 
     state = await testNode(state);
+    console.log('[runAgentWorkflow] testNode completed');
     if (state.error) throw new Error(state.error);
 
     console.log('Workflow completed:', state);

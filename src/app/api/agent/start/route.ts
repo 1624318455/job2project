@@ -100,7 +100,9 @@ async function startAgentWorkflow(
   }
 ) {
   try {
+    console.log('[startAgentWorkflow] Starting workflow for task:', taskId);
     await runAgentWorkflow(taskId, jobDescription, apiKeys);
+    console.log('[startAgentWorkflow] Workflow completed for task:', taskId);
   } catch (error) {
     console.error('Agent workflow error:', error);
   }
