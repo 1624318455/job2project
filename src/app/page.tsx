@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import MessageList from '@/components/Chat/MessageList';
 import InputArea from '@/components/Chat/InputArea';
@@ -11,16 +11,82 @@ import { isApiConfigured, createApiHeaders } from '@/lib/apiKeys';
 
 export default function MainPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentTaskId, setCurrentTaskId] = useState<string | null>(null);
   const [agentSteps, setAgentSteps] = useState<AgentStep[]>([]);
   const [apiConfigured, setApiConfigured] = useState(false);
+  const [loadedTask, setLoadedTask] = useState<Task | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const taskIdFromUrl = searchParams.get('task_id');
 
   useEffect(() => {
     setApiConfigured(isApiConfigured());
   }, []);
+
+  const loadTaskFromId = useCallback(async (taskId: string) => {
+    try {
+      const response = await fetch(`/api/agent/status?task_id=${taskId}`);
+      const data = await response.json();
+      
+      if (data.code === 0 && data.data) {
+        const task: Task = data.data;
+        setLoadedTask(task);
+        
+        const userMsg: Message = {
+          id: uuidv4(),
+          role: 'user',
+          content: task.job_description || '',
+          timestamp: task.created_at,
+        };
+        setMessages([userMsg]);
+        
+        setAgentSteps(updateStepsFromStatus(task.status));
+        setIsProcessing(task.status === 'generating' || task.status === 'analyzing' || task.status === 'deciding');
+        
+        if (task.status !== 'completed' && task.status !== 'failed') {
+          setCurrentTaskId(taskId);
+          startPolling(taskId);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load task:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (taskIdFromUrl && !currentTaskId && !loadedTask) {
+      loadTaskFromId(taskIdFromUrl);
+    }
+  }, [taskIdFromUrl, currentTaskId, loadedTask]);
+
+  useEffect(() => {
+    if (taskIdFromUrl && !currentTaskId && !loadedTask) {
+      loadTaskFromId(taskIdFromUrl);
+    }
+  }, [taskIdFromUrl, currentTaskId, loadedTask, loadTaskFromId]);
+
+  const updateStepsFromStatus = (status: string): AgentStep[] => {
+    const now = new Date().toISOString();
+    const steps: AgentStep[] = [
+      { stage: 'analyzing', detail: '正在分析岗位描述，提取关键技术栈...', timestamp: now },
+      { stage: 'deciding', detail: '正在综合分析结果，决策最佳项目类型...', timestamp: now },
+    ];
+    
+    if (status === 'generating' || status === 'deploying') {
+      steps.push({ stage: 'generating', detail: '正在生成项目代码...', timestamp: now });
+    }
+    
+    if (status === 'completed') {
+      steps[0] = { ...steps[0], timestamp: now };
+      steps[1] = { ...steps[1], timestamp: now };
+    }
+    
+    return steps;
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -136,7 +202,6 @@ export default function MainPage() {
   const updateAgentSteps = (status: string) => {
     const statusMap: Record<string, { stage: AgentStep['stage']; detail: string }> = {
       analyzing: { stage: 'analyzing', detail: '正在分析岗位描述，提取关键技术栈...' },
-      searching: { stage: 'searching', detail: '正在搜索市场趋势和技术热度...' },
       deciding: { stage: 'deciding', detail: '正在综合分析结果，决策最佳项目类型...' },
       generating: { stage: 'generating', detail: '正在生成项目代码...' },
       deploying: { stage: 'deploying', detail: '正在部署项目...' },
@@ -233,7 +298,7 @@ export default function MainPage() {
       {/* 主内容区 */}
       <main className="flex-1 overflow-y-auto px-4 py-6 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          {messages.length === 0 ? (
+          {messages.length === 0 && !taskIdFromUrl ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
               <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mb-6">
                 <svg className="w-8 h-8 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
