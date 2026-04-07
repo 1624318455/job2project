@@ -43,13 +43,19 @@ export async function saveProjectCode(id: string, code: Record<string, string>) 
 
 export async function getProjectCode(id: string) {
   console.log('[getProjectCode] Fetching for task', id);
-  const rows = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
-  console.log('[getProjectCode] Rows:', rows.length, 'Has generated_code:', !!rows[0]?.project_metadata?.generated_code);
-  if (rows[0]?.project_metadata?.generated_code) {
-    console.log('[getProjectCode] Keys:', Object.keys(rows[0].project_metadata.generated_code).slice(0, 5));
-    return rows[0].project_metadata.generated_code;
+  try {
+    const rows = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
+    console.log('[getProjectCode] Full project_metadata:', JSON.stringify(rows[0]?.project_metadata));
+    if (rows[0]?.project_metadata?.generated_code) {
+      console.log('[getProjectCode] Keys:', Object.keys(rows[0].project_metadata.generated_code).slice(0, 5));
+      return rows[0].project_metadata.generated_code;
+    }
+    console.log('[getProjectCode] No generated_code in project_metadata');
+    return null;
+  } catch (error) {
+    console.error('[getProjectCode] Error:', error);
+    return null;
   }
-  return null;
 }
 
 export async function listTasks(page = 1, pageSize = 20) {
