@@ -100,3 +100,84 @@ ${results.join('\n\n')}
   const response = await llm.invoke(messages);
   return response.content as string;
 }
+
+export async function researchProducts(
+  query: string,
+  tavilyApiKey: string,
+  maxResults: number = 10
+): Promise<SearchResult[]> {
+  try {
+    const response = await fetch('https://api.tavily.com/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tavilyApiKey}`,
+      },
+      body: JSON.stringify({
+        query: query,
+        max_results: maxResults,
+        include_answer: true,
+        include_raw_content: true,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error('Tavily API error:', response.statusText);
+      return [];
+    }
+
+    const data = await response.json();
+    console.log('[researchProducts] Got', data.results?.length || 0, 'results');
+    return data.results || [];
+  } catch (error) {
+    console.error('Research search error:', error);
+    return [];
+  }
+}
+
+export async function summarizeResearch(
+  results: SearchResult[],
+  projectInfo: string,
+  openaiApiKey?: string,
+  openaiModel?: string
+): Promise<string> {
+  if (results.length === 0) {
+    return '未找到相关竞品。';
+  }
+
+  const llm = new ChatOpenAI({
+    apiKey: openaiApiKey || process.env.OPENAI_API_KEY || '',
+    model: openaiModel || process.env.OPENAI_MODEL || 'gpt-4',
+    configuration: {
+      baseURL: resolveBaseUrl(openaiModel || process.env.OPENAI_MODEL),
+      timeout: 120_000,
+      maxRetries: 2,
+    },
+    temperature: 0.3,
+  });
+
+  const resultsText = results
+    .slice(0, 5)
+    .map((r, i) => `${i + 1}. ${r.title}\nURL: ${r.url}\n${r.content?.substring(0, 500) || ''}`)
+    .join('\n\n');
+
+  const messages = [
+    new SystemMessage(`你是一个产品分析师。请分析搜索到的类似产品，总结：
+1. 这些产品的核心功能和特点
+2. 界面设计和交互模式
+3. 值得借鉴的设计要点
+4. 可以做出差异化的方向
+
+请详细分析，帮助生成高质量的项目。`),
+    new HumanMessage(`项目信息：${projectInfo}
+
+竞品分析：
+${resultsText}
+
+请总结竞品的关键特点和设计建议。`),
+  ];
+
+  const response = await llm.invoke(messages);
+  console.log('[summarizeResearch] Analysis complete');
+  return response.content as string;
+}

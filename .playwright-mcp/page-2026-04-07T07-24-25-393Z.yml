@@ -1,0 +1,40 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e48]:
+        - generic [ref=e50]:
+          - paragraph [ref=e52]: 前端开发工程师
+          - generic [ref=e53]: 15:21
+        - generic [ref=e96]:
+          - paragraph [ref=e98]: 项目生成完成！
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - generic [ref=e101]: Web应用
+              - generic [ref=e102]: 已生成
+              - generic [ref=e103]: 41 个文件
+            - link "下载项目代码（ZIP）" [active] [ref=e105] [cursor=pointer]:
+              - /url: /api/project/download?task_id=0c1cc962-faaf-4ea0-8946-619722633aab
+              - img [ref=e106]
+              - text: 下载项目代码（ZIP）
+          - button "📁 查看生成的代码 (41 个文件)" [ref=e109] [cursor=pointer]:
+            - generic [ref=e110]: 📁 查看生成的代码 (41 个文件)
+            - img [ref=e111]
+          - generic [ref=e113]: 15:23
+    - contentinfo [ref=e34]:
+      - generic [ref=e37]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e39]
+        - generic [ref=e40]:
+          - img [ref=e42] [cursor=pointer]
+          - button [disabled] [ref=e44]:
+            - img [ref=e45]
+  - alert [ref=e47]

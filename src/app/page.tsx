@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
 import MessageList from '@/components/Chat/MessageList';
@@ -9,7 +9,7 @@ import AgentThinking from '@/components/Chat/AgentThinking';
 import { Message, Task, AgentStep } from '@/types';
 import { isApiConfigured, createApiHeaders } from '@/lib/apiKeys';
 
-export default function MainPage() {
+function MainPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [messages, setMessages] = useState<Message[]>([]);
@@ -367,5 +367,24 @@ export default function MainPage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function MainPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col h-screen bg-background">
+        <header className="flex items-center justify-between px-6 py-4 bg-primary border-b border-border">
+          <div className="flex items-center gap-3">
+            <h1 className="text-xl font-semibold text-foreground">Job2Project</h1>
+          </div>
+        </header>
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-muted">加载中...</div>
+        </main>
+      </div>
+    }>
+      <MainPageContent />
+    </Suspense>
   );
 }

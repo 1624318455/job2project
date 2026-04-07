@@ -36,6 +36,7 @@ interface AgentState {
     key_requirements: string[];
   };
   searchContext?: string;
+  researchContext?: string;
   decision?: Decision;
   projectCode?: Record<string, string>;
   projectMetadata?: ProjectMetadata;
@@ -156,6 +157,45 @@ async function decideNode(state: AgentState): Promise<AgentState> {
   }
 }
 
+async function researchNode(state: AgentState): Promise<AgentState> {
+  console.log('Researching similar products...');
+  await updateTaskStatus(state.taskId, 'researching');
+
+  try {
+    if (!state.analysis || !state.decision) {
+      throw new Error('Analysis or decision not available');
+    }
+
+    if (!state.tavilyApiKey) {
+      console.log('No Tavily API key, skipping research');
+      return { ...state, researchContext: '未配置搜索API，跳过竞品分析。' };
+    }
+
+    const { researchProducts, summarizeResearch } = await import('@/utils/searchClient');
+    
+    const projectName = state.decision.project_spec.name;
+    const projectType = state.decision.type;
+    const techStack = state.analysis.tech_stack.join(', ');
+    
+    const searchQuery = `${projectName} ${techStack} web application similar products examples`;
+    
+    const searchResults = await researchProducts(searchQuery, state.tavilyApiKey);
+    
+    const summary = await summarizeResearch(
+      searchResults,
+      `产品类型: ${projectType}, 技术栈: ${techStack}`,
+      state.openaiApiKey,
+      state.openaiModel
+    );
+
+    console.log('[researchNode] Found', searchResults.length, 'similar products');
+    return { ...state, researchContext: summary };
+  } catch (error) {
+    console.error('Research error:', error);
+    return { ...state, researchContext: '竞品研究失败，继续生成代码。' };
+  }
+}
+
 async function generateNode(state: AgentState): Promise<AgentState> {
   console.log('Generating project code...');
   await updateTaskStatus(state.taskId, 'generating');
@@ -169,7 +209,8 @@ async function generateNode(state: AgentState): Promise<AgentState> {
       state.decision.project_spec,
       state.decision.type,
       state.openaiApiKey,
-      state.openaiModel
+      state.openaiModel,
+      state.researchContext
     );
 
     console.log('[generateNode] Generated', Object.keys(projectCode).length, 'files for task', state.taskId);
@@ -289,18 +330,21 @@ export async function runAgentWorkflow(
 
   try {
     console.log('[runAgentWorkflow] Starting workflow for task:', taskId);
+    
     state = await analyzeNode(state);
     console.log('[runAgentWorkflow] analyzeNode completed');
     if (state.error) throw new Error(state.error);
 
-    state = await searchNode(state);
-    console.log('[runAgentWorkflow] searchNode completed');
-    if (state.error) throw new Error(state.error);
-
+    // Skip searchNode to save time - not critical for this use case
+    state.searchContext = '基于岗位描述直接决策';
+    
     state = await decideNode(state);
     console.log('[runAgentWorkflow] decideNode completed');
     if (state.error) throw new Error(state.error);
 
+    // Skip researchNode to save time - can be enabled later
+    state.researchContext = '跳过竞品分析，基于规格直接生成代码';
+    
     state = await generateNode(state);
     console.log('[runAgentWorkflow] generateNode completed');
     if (state.error) throw new Error(state.error);

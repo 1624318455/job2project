@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e50]:
+          - paragraph [ref=e52]: Vue前端工程师
+          - generic [ref=e53]: 14:06
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - img [ref=e59]
+              - generic [ref=e61]: Agent 正在思考...
+            - button "取消" [ref=e62] [cursor=pointer]
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - img [ref=e66]
+              - generic [ref=e68]:
+                - generic [ref=e69]: 分析中
+                - generic [ref=e70]: 正在分析岗位描述，提取关键技术栈...
+            - generic [ref=e71]:
+              - img [ref=e73]
+              - generic [ref=e75]:
+                - generic [ref=e76]: 决策中
+                - generic [ref=e77]: 正在综合分析结果，决策最佳项目类型...
+            - generic [ref=e78]:
+              - img [ref=e80]
+              - generic [ref=e82]:
+                - generic [ref=e83]: 生成中
+                - generic [ref=e84]: 正在生成项目代码...
+              - img [ref=e86]
+    - contentinfo [ref=e34]:
+      - generic [ref=e37]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [disabled] [ref=e39]
+        - generic [ref=e40]:
+          - img [ref=e42] [cursor=pointer]
+          - button [disabled] [ref=e44]:
+            - img [ref=e45]
+  - alert [ref=e47]

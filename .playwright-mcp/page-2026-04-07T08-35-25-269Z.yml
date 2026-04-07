@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - link "返回" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img [ref=e10]
+          - text: 返回
+        - heading "历史任务" [level=1] [ref=e12]
+    - main [ref=e13]:
+      - generic [ref=e15]:
+        - generic [ref=e16] [cursor=pointer]:
+          - generic [ref=e18]:
+            - generic [ref=e20]: 生成中
+            - paragraph [ref=e21]: 前端（小程序经验 11-17K）武汉·洪山区3-5年本科叶女士岗位职责:1、参与公司产品的移动端h5、小程序、PC后台开发工作；2、优化前端体验，保证跨平台浏览器兼容性良好；3、与产品、后端人员、测试人员等保持良好沟通岗位要求：1、计算机或相关专业全日制本科及以上学历2、3年以上web前端开发工作经验3、熟练使用vue、react开发后台和h5项目、熟悉小程序开发（都有实际项目经验)。4、toC项目经验丰富，熟练动画和各种UI动效，各种移动端兼容问题经验丰富。5、对性能优化、前端工程化有一定了解。
+          - generic [ref=e23]: 2026/04/07 16:28
+        - generic [ref=e24] [cursor=pointer]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - generic [ref=e28]: 已完成
+              - generic [ref=e29]: Web应用
+              - generic [ref=e30]: 41 个文件
+            - paragraph [ref=e31]: 前端开发工程师
+          - generic [ref=e32]:
+            - generic [ref=e34]:
+              - img [ref=e35]
+              - text: package.json, vite.config.ts, tsconfig.json...
+            - generic [ref=e37]: 2026/04/07 15:21
+        - generic [ref=e38] [cursor=pointer]:
+          - generic [ref=e40]:
+            - generic [ref=e42]: 分析中
+            - paragraph [ref=e43]: 招聘React前端开发工程师，要求熟练使用React、TypeScript、Redux，负责SaaS产品开发，有B端后台管理系统经验
+          - generic [ref=e45]: 2026/04/07 15:18
+        - generic [ref=e46] [cursor=pointer]:
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: 已完成
+              - generic [ref=e51]: Web应用
+              - generic [ref=e52]: 38 个文件
+            - paragraph [ref=e53]: Vue前端工程师
+          - generic [ref=e54]:
+            - generic [ref=e56]:
+              - img [ref=e57]
+              - text: package.json, vite.config.ts, tsconfig.json...
+            - generic [ref=e59]: 2026/04/07 14:06
+        - generic [ref=e60] [cursor=pointer]:
+          - generic [ref=e62]:
+            - generic [ref=e64]: 分析中
+            - paragraph [ref=e65]: 招聘React前端工程师，要求熟练掌握React、TypeScript、Redux，有B端中台系统开发经验
+          - generic [ref=e67]: 2026/04/07 14:03
+        - generic [ref=e68] [cursor=pointer]:
+          - generic [ref=e70]:
+            - generic [ref=e72]: 分析中
+            - paragraph [ref=e73]: 招聘React前端开发工程师，要求熟练使用React、TypeScript、Redux，有中台系统开发经验
+          - generic [ref=e75]: 2026/04/07 13:42
+        - generic [ref=e76] [cursor=pointer]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - generic [ref=e80]: 已完成
+              - generic [ref=e81]: Web应用
+              - generic [ref=e82]: 35 个文件
+            - paragraph [ref=e83]: React前端工程师，会Vue和TypeScript
+          - generic [ref=e84]:
+            - generic [ref=e86]:
+              - img [ref=e87]
+              - text: package.json, vite.config.ts, tsconfig.json...
+            - generic [ref=e89]: 2026/04/07 13:13
+        - generic [ref=e90] [cursor=pointer]:
+          - generic [ref=e92]:
+            - generic [ref=e94]: 分析中
+            - paragraph [ref=e95]: 招聘高级前端开发工程师，要求熟练掌握React、TypeScript、Next.js，有3年以上工作经验，负责公司核心产品的前端架构设计和团队技术指导，年薪40-60万
+          - generic [ref=e97]: 2026/04/07 13:05
+        - generic [ref=e98] [cursor=pointer]:
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: 已完成
+              - generic [ref=e103]: Web应用
+              - generic [ref=e104]: 13 个文件
+            - paragraph [ref=e105]: 前端开发工程师，要求熟练使用React和TypeScript，年薪30万
+          - generic [ref=e106]:
+            - generic [ref=e108]:
+              - img [ref=e109]
+              - text: package.json, vite.config.ts, tsconfig.json...
+            - generic [ref=e111]: 2026/04/07 00:30
+        - generic [ref=e112] [cursor=pointer]:
+          - generic [ref=e114]:
+            - generic [ref=e116]: 分析中
+            - paragraph [ref=e117]: Vue计数器
+          - generic [ref=e119]: 2026/04/07 00:26
+        - generic [ref=e120] [cursor=pointer]:
+          - generic [ref=e122]:
+            - generic [ref=e124]: 分析中
+            - paragraph [ref=e125]: Vue计数器
+          - generic [ref=e127]: 2026/04/07 00:23
+        - generic [ref=e128] [cursor=pointer]:
+          - generic [ref=e130]:
+            - generic [ref=e132]: 分析中
+            - paragraph [ref=e133]: 创建一个简单的计数器React应用
+          - generic [ref=e135]: 2026/04/07 00:11
+        - generic [ref=e136] [cursor=pointer]:
+          - generic [ref=e138]:
+            - generic [ref=e140]: 分析中
+            - paragraph [ref=e141]: 创建一个简单的计数器React应用
+          - generic [ref=e143]: 2026/04/07 00:08
+        - generic [ref=e144] [cursor=pointer]:
+          - generic [ref=e146]:
+            - generic [ref=e148]: 分析中
+            - paragraph [ref=e149]: 创建一个简单的Vue计数器应用
+          - generic [ref=e151]: 2026/04/07 00:02
+        - generic [ref=e152] [cursor=pointer]:
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]: 已完成
+              - generic [ref=e157]: Web应用
+              - generic [ref=e158]: 14 个文件
+            - paragraph [ref=e159]: 创建一个简单的React计数器应用
+          - generic [ref=e160]:
+            - generic [ref=e162]:
+              - img [ref=e163]
+              - text: package.json, vite.config.ts, tsconfig.json...
+            - generic [ref=e165]: 2026/04/06 23:18
+  - alert [ref=e6]

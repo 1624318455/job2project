@@ -99,27 +99,18 @@ async function startAgentWorkflow(
     vercelToken: string;
   }
 ) {
-  const timeoutMs = 5 * 60 * 1000; // 5 minute timeout
+  console.log('[startAgentWorkflow] Starting workflow for task:', taskId);
   
-  try {
-    console.log('[startAgentWorkflow] Starting workflow for task:', taskId);
-    
-    const workflowPromise = runAgentWorkflow(taskId, jobDescription, apiKeys);
-    const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Workflow timeout after 5 minutes')), timeoutMs)
-    );
-    
-    await Promise.race([workflowPromise, timeoutPromise]);
-    console.log('[startAgentWorkflow] Workflow completed for task:', taskId);
-  } catch (error) {
-    console.error('Agent workflow error:', error);
-    // Update task status to failed
-    try {
-      const { updateTaskStatus, updateTaskMetadata } = await import('@/lib/tasks');
-      await updateTaskStatus(taskId, 'failed');
-      await updateTaskMetadata(taskId, { error_message: error instanceof Error ? error.message : 'Workflow failed' });
-    } catch (e) {
-      console.error('Failed to update task status:', e);
-    }
-  }
+  runAgentWorkflow(taskId, jobDescription, apiKeys)
+    .then(() => console.log('[startAgentWorkflow] Workflow completed for task:', taskId))
+    .catch(async (error) => {
+      console.error('[startAgentWorkflow] Workflow error:', error);
+      try {
+        const { updateTaskStatus, updateTaskMetadata } = await import('@/lib/tasks');
+        await updateTaskStatus(taskId, 'failed');
+        await updateTaskMetadata(taskId, { error_message: error instanceof Error ? error.message : 'Workflow failed' });
+      } catch (e) {
+        console.error('[startAgentWorkflow] Failed to update task status:', e);
+      }
+    });
 }

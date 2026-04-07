@@ -1,0 +1,3 @@
+- generic [ref=e3]:
+  - heading "ModernWebApp" [level=1] [ref=e4]
+  - paragraph [ref=e5]: A modern, full-stack web application built with React and TypeScript, leveraging Next.js for static site generation and server-side rendering, and designed for scalability and maintainability.

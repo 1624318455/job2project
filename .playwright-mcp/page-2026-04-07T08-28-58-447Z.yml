@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e20]:
+          - paragraph [ref=e22]: 前端（小程序经验 11-17K）武汉·洪山区3-5年本科叶女士岗位职责:1、参与公司产品的移动端h5、小程序、PC后台开发工作；2、优化前端体验，保证跨平台浏览器兼容性良好；3、与产品、后端人员、测试人员等保持良好沟通岗位要求：1、计算机或相关专业全日制本科及以上学历2、3年以上web前端开发工作经验3、熟练使用vue、react开发后台和h5项目、熟悉小程序开发（都有实际项目经验)。4、toC项目经验丰富，熟练动画和各种UI动效，各种移动端兼容问题经验丰富。5、对性能优化、前端工程化有一定了解。
+          - generic [ref=e23]: 16:28
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - img [ref=e43]
+              - generic [ref=e45]: Agent 正在思考...
+            - button "取消" [ref=e46] [cursor=pointer]
+          - generic [ref=e48]:
+            - img [ref=e50]
+            - generic [ref=e52]:
+              - generic [ref=e53]: 分析中
+              - generic [ref=e54]: 正在分析岗位描述，提取关键技术栈...
+            - img [ref=e56]
+    - contentinfo [ref=e24]:
+      - generic [ref=e27]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [disabled] [ref=e29]
+        - generic [ref=e30]:
+          - img [ref=e32] [cursor=pointer]
+          - button [disabled] [ref=e34]:
+            - img [ref=e35]
+  - alert [ref=e37]

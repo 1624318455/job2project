@@ -1,0 +1,32 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - navigation [ref=e5]:
+      - link "智能数据可视化分析平台" [ref=e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e7]:
+        - link "首页" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - link "关于" [ref=e9] [cursor=pointer]:
+          - /url: /about
+        - link "联系" [ref=e10] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=e11]:
+    - generic [ref=e40]:
+      - heading "数据可视化" [level=2] [ref=e41]
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]: "150"
+          - generic [ref=e45]: ECharts
+          - generic [ref=e46]: 可视化
+        - generic [ref=e47]:
+          - generic [ref=e48]: "120"
+          - generic [ref=e49]: D3.js
+          - generic [ref=e50]: 可视化
+        - generic [ref=e51]:
+          - generic [ref=e52]: "90"
+          - generic [ref=e53]: Three.js
+          - generic [ref=e54]: 3D
+        - generic [ref=e55]:
+          - generic [ref=e56]: "70"
+          - generic [ref=e57]: C3.js
+          - generic [ref=e58]: 可视化

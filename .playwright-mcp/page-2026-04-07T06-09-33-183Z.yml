@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e48]:
+        - generic [ref=e50]:
+          - paragraph [ref=e52]: Vue前端工程师
+          - generic [ref=e53]: 14:06
+        - generic [ref=e106]:
+          - paragraph [ref=e108]: 项目生成完成！
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: Web应用
+              - generic [ref=e112]: 已生成
+              - generic [ref=e113]: 38 个文件
+            - link "下载项目代码（ZIP）" [ref=e115] [cursor=pointer]:
+              - /url: /api/project/download?task_id=60240f9b-209e-434d-a8a1-c1b68cbc00e0
+              - img [ref=e116]
+              - text: 下载项目代码（ZIP）
+          - button "📁 查看生成的代码 (38 个文件)" [ref=e119] [cursor=pointer]:
+            - generic [ref=e120]: 📁 查看生成的代码 (38 个文件)
+            - img [ref=e121]
+          - generic [ref=e123]: 14:08
+    - contentinfo [ref=e34]:
+      - generic [ref=e37]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e39]
+        - generic [ref=e40]:
+          - img [ref=e42] [cursor=pointer]
+          - button [disabled] [ref=e44]:
+            - img [ref=e45]
+  - alert [ref=e47]

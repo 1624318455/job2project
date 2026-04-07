@@ -1,0 +1,35 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e18]:
+        - img [ref=e20]
+        - heading "欢迎使用 Job2Project" [level=2] [ref=e22]
+        - paragraph [ref=e23]: 发送前端开发工程师的岗位描述，AI Agent将自动分析需求并生成完整的项目代码。
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: 支持多模态输入
+            - paragraph [ref=e27]: 粘贴文本或上传招聘截图
+          - generic [ref=e28]:
+            - generic [ref=e29]: 智能决策引擎
+            - paragraph [ref=e30]: 自动选择最佳项目类型
+          - generic [ref=e31]:
+            - generic [ref=e32]: 一键部署预览
+            - paragraph [ref=e33]: Web项目自动部署到Vercel
+    - contentinfo [ref=e34]:
+      - generic [ref=e37]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e39]: "前端（小程序经验 11-17K 公积金12%） 武汉·洪山区·珞狮南路3-5年本科 叶女士 更多相似职位> 高阳捷迅·HR 3日内活跃 职位详情 小程序经验 to C经验 Vue React 前端开发经验 计算机/软件工程相关专业 工作时间：周一~周五，弹性打卡，上班 9:00~10:00，下班17:30~18:30 入职缴纳五险一金，转正享受补充医疗保险，节 日礼品，体检，健身器材，良好工作环境氛 围. 岗位职责: 1、参与公司产品的移动端h5、小程序、PC后台 开发工作； 2、优化前端体验，保证跨平台浏览器兼容性良 好； 3、与产品、后端人员、测试人员等保持良好沟 通，能快速理解、消化各方需求，并落实为具体 的开发工作； 岗位要求： 1、计算机或相关专业【全日制本科及以上】学 历 2、3年以上web前端开发工作经验 3、熟练使用vue、react开发后台和h5项目、熟 悉小程序开发（都有实际项目经验)。小程序有原 生框架经验优先。 4、toC项目经验丰富，能够快速高度还原设计 稿，熟练动画和各种UI动效，各种移动端兼容问 题经验丰富。 5、对性能优化、前端工程化有一定了解。"
+        - generic [ref=e40]:
+          - img [ref=e42] [cursor=pointer]
+          - button [ref=e44] [cursor=pointer]:
+            - img [ref=e45]
+  - alert [ref=e47]
