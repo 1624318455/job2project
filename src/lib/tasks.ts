@@ -22,9 +22,14 @@ export async function updateTaskStatus(id: string, status: string) {
 }
 
 export async function updateTaskMetadata(id: string, metadata: any) {
+  const existing = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
+  const merged = {
+    ...(existing[0]?.project_metadata || {}),
+    ...metadata,
+  };
   return execute(
     `UPDATE tasks SET project_metadata = $1::jsonb, updated_at = NOW() WHERE id = $2`,
-    [JSON.stringify(metadata), id]
+    [JSON.stringify(merged), id]
   );
 }
 
