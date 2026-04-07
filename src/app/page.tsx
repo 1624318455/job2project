@@ -42,7 +42,22 @@ function MainPageContent() {
           content: task.job_description || '',
           timestamp: task.created_at,
         };
-        setMessages([userMsg]);
+        
+        const messages: Message[] = [userMsg];
+        
+        if (task.status === 'completed' && task.project_metadata) {
+          const agentMsg: Message = {
+            id: uuidv4(),
+            role: 'agent',
+            content: '项目生成完成！',
+            result: task.project_metadata,
+            task_id: taskId,
+            timestamp: task.updated_at,
+          };
+          messages.push(agentMsg);
+        }
+        
+        setMessages(messages);
         
         setAgentSteps(updateStepsFromStatus(task.status));
         setIsProcessing(task.status === 'generating' || task.status === 'analyzing' || task.status === 'deciding');
