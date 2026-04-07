@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]
+    - contentinfo [ref=e17]:
+      - generic [ref=e20]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e22]
+        - generic [ref=e23]:
+          - img [ref=e25] [cursor=pointer]
+          - button [disabled] [ref=e27]:
+            - img [ref=e28]
+  - alert [ref=e30]

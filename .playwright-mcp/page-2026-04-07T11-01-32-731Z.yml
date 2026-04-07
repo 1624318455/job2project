@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e20]:
+          - paragraph [ref=e22]: 前端开发工程师，要求熟练使用React、Vue，有3年经验，toC项目经验优先
+          - generic [ref=e23]: 19:00
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - img [ref=e43]
+              - generic [ref=e45]: Agent 正在思考...
+            - button "取消" [ref=e46] [cursor=pointer]
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - img [ref=e50]
+              - generic [ref=e52]:
+                - generic [ref=e53]: 分析中
+                - generic [ref=e54]: 正在分析岗位描述，提取关键技术栈...
+            - generic [ref=e55]:
+              - img [ref=e57]
+              - generic [ref=e59]:
+                - generic [ref=e60]: 决策中
+                - generic [ref=e61]: 正在综合分析结果，决策最佳项目类型...
+            - generic [ref=e62]:
+              - img [ref=e64]
+              - generic [ref=e66]:
+                - generic [ref=e67]: 生成中
+                - generic [ref=e68]: 正在生成项目代码...
+              - img [ref=e70]
+    - contentinfo [ref=e24]:
+      - generic [ref=e27]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [disabled] [ref=e29]
+        - generic [ref=e30]:
+          - img [ref=e32] [cursor=pointer]
+          - button [disabled] [ref=e34]:
+            - img [ref=e35]
+  - alert [ref=e37]

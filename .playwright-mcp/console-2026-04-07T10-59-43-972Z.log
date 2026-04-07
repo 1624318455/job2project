@@ -1,0 +1,2 @@
+[     299ms] [ERROR] Polling error: TypeError: Failed to fetch
+    at https://job2project.vercel.app/_next/static/chunks/0dxvmptm8gf_7.js:1:130270 @ https://job2project.vercel.app/_next/static/chunks/0dxvmptm8gf_7.js:0

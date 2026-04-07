@@ -34,7 +34,6 @@ export async function updateTaskMetadata(id: string, metadata: any) {
 }
 
 export async function saveProjectCode(id: string, code: Record<string, string>) {
-  console.log('[saveProjectCode] Saving', Object.keys(code).length, 'files for task', id);
   return execute(
     `UPDATE tasks SET project_metadata = COALESCE(project_metadata, '{}'::jsonb) || jsonb_build_object('generated_code', $1::jsonb), updated_at = NOW() WHERE id = $2`,
     [JSON.stringify(code), id]
@@ -42,20 +41,11 @@ export async function saveProjectCode(id: string, code: Record<string, string>) 
 }
 
 export async function getProjectCode(id: string) {
-  console.log('[getProjectCode] Fetching for task', id);
-  try {
-    const rows = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
-    console.log('[getProjectCode] Full project_metadata:', JSON.stringify(rows[0]?.project_metadata));
-    if (rows[0]?.project_metadata?.generated_code) {
-      console.log('[getProjectCode] Keys:', Object.keys(rows[0].project_metadata.generated_code).slice(0, 5));
-      return rows[0].project_metadata.generated_code;
-    }
-    console.log('[getProjectCode] No generated_code in project_metadata');
-    return null;
-  } catch (error) {
-    console.error('[getProjectCode] Error:', error);
-    return null;
+  const rows = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
+  if (rows[0]?.project_metadata?.generated_code) {
+    return rows[0].project_metadata.generated_code;
   }
+  return null;
 }
 
 export async function listTasks(page = 1, pageSize = 20) {

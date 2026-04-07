@@ -1,0 +1,4 @@
+[ 3349882ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://job2project.vercel.app/api/project/file?task_id=0c1cc962-faaf-4ea0-8946-619722633aab&file=package.json:0
+[ 4655997ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://job2project.vercel.app/api/project/file?task_id=0c1cc962-faaf-4ea0-8946-619722633aab&file=package.json:0
+[ 6361496ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://job2project.vercel.app/api/project/file?task_id=0c1cc962-faaf-4ea0-8946-619722633aab&file=package.json:0
+[ 6868270ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://job2project.vercel.app/api/project/file?task_id=0c1cc962-faaf-4ea0-8946-619722633aab&file=package.json:0

@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e6]
+        - heading "Job2Project" [level=1] [ref=e8]
+        - generic [ref=e9]: AI Agent智能体应用
+      - navigation [ref=e10]:
+        - button "设置" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - link "历史任务" [ref=e15] [cursor=pointer]:
+          - /url: /history
+    - main [ref=e16]:
+      - generic [ref=e18]:
+        - generic [ref=e20]:
+          - paragraph [ref=e22]: 前端开发工程师，要求熟练使用React、Vue，有3年经验，toC项目经验优先
+          - generic [ref=e23]: 19:00
+        - generic [ref=e97]:
+          - paragraph [ref=e99]: 项目生成完成！
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: Web应用
+              - generic [ref=e103]: 已生成
+              - generic [ref=e104]: 13 个文件
+            - link "下载项目代码（ZIP）" [ref=e106] [cursor=pointer]:
+              - /url: /api/project/download?task_id=c94ca096-e596-4a75-8bcd-21babc84e486
+              - img [ref=e107]
+              - text: 下载项目代码（ZIP）
+          - button "📁 查看生成的代码 (13 个文件)" [ref=e110] [cursor=pointer]:
+            - generic [ref=e111]: 📁 查看生成的代码 (13 个文件)
+            - img [ref=e112]
+          - generic [ref=e114]: 19:03
+    - contentinfo [ref=e24]:
+      - generic [ref=e27]:
+        - textbox "粘贴岗位描述或上传招聘截图..." [ref=e29]
+        - generic [ref=e30]:
+          - img [ref=e32] [cursor=pointer]
+          - button [disabled] [ref=e34]:
+            - img [ref=e35]
+  - alert [ref=e37]
