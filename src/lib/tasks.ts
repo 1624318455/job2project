@@ -34,6 +34,7 @@ export async function updateTaskMetadata(id: string, metadata: any) {
 }
 
 export async function saveProjectCode(id: string, code: Record<string, string>) {
+  console.log('[saveProjectCode] Saving', Object.keys(code).length, 'files for task', id);
   return execute(
     `UPDATE tasks SET project_metadata = COALESCE(project_metadata, '{}'::jsonb) || jsonb_build_object('generated_code', $1::jsonb), updated_at = NOW() WHERE id = $2`,
     [JSON.stringify(code), id]
@@ -41,8 +42,11 @@ export async function saveProjectCode(id: string, code: Record<string, string>) 
 }
 
 export async function getProjectCode(id: string) {
+  console.log('[getProjectCode] Fetching for task', id);
   const rows = await query(`SELECT project_metadata FROM tasks WHERE id = $1`, [id]);
+  console.log('[getProjectCode] Rows:', rows.length, 'Has generated_code:', !!rows[0]?.project_metadata?.generated_code);
   if (rows[0]?.project_metadata?.generated_code) {
+    console.log('[getProjectCode] Keys:', Object.keys(rows[0].project_metadata.generated_code).slice(0, 5));
     return rows[0].project_metadata.generated_code;
   }
   return null;
