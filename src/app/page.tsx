@@ -170,6 +170,22 @@ function MainPageContent() {
 
           updateAgentSteps(task.status);
 
+          if (task.status === 'waiting_confirm' && task.decision) {
+            const confirmMessage: Message = {
+              id: uuidv4(),
+              role: 'agent',
+              content: `我建议生成一个【${task.decision.type === 'web' ? 'Web应用' : task.decision.type === 'desktop' ? '桌面应用' : '小程序'}】，理由：${task.decision.reason}\n\n技术栈：${task.decision.tech_stack.join('、')}\n\n项目名称：${task.decision.project_spec?.name || '待生成'}\n\n请确认是否继续？`,
+              decision: task.decision,
+              task_id: taskId,
+              timestamp: new Date().toISOString(),
+            };
+            setMessages((prev) => [...prev, confirmMessage]);
+            setIsProcessing(false);
+            setCurrentTaskId(null);
+            clearInterval(interval);
+            return;
+          }
+
           if (task.status === 'completed') {
             clearInterval(interval);
             setIsProcessing(false);
@@ -212,6 +228,32 @@ function MainPageContent() {
     }, 2000);
 
     return () => clearInterval(interval);
+  };
+
+  const handleConfirm = async (taskId: string, decision: any, confirmed: boolean) => {
+    try {
+      await fetch('/api/agent/confirm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ task_id: taskId, decision, confirmed }),
+      });
+
+      if (confirmed) {
+        setIsProcessing(true);
+        setCurrentTaskId(taskId);
+        startPolling(taskId);
+      } else {
+        const cancelMessage: Message = {
+          id: uuidv4(),
+          role: 'agent',
+          content: '已取消任务。',
+          timestamp: new Date().toISOString(),
+        };
+        setMessages((prev) => [...prev, cancelMessage]);
+      }
+    } catch (error) {
+      console.error('Confirm error:', error);
+    }
   };
 
   const updateAgentSteps = (status: string) => {
@@ -352,7 +394,7 @@ function MainPageContent() {
               </div>
             </div>
           ) : (
-            <MessageList messages={messages} />
+            <MessageList messages={messages} onConfirm={handleConfirm} />
           )}
 
           {isProcessing && agentSteps.length > 0 && (

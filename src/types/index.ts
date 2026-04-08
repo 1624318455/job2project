@@ -16,6 +16,7 @@ export type TaskStatus =
   | 'analyzing'
   | 'searching'
   | 'deciding'
+  | 'waiting_confirm'  // 等待用户确认决策
   | 'generating'
   | 'deploying'
   | 'testing'
@@ -76,6 +77,7 @@ export interface Message {
   image_url?: string;
   steps?: AgentStep[];
   result?: ProjectMetadata;
+  decision?: Decision;
   task_id?: string;
   timestamp: string;
 }

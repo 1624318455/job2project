@@ -41,6 +41,7 @@ interface AgentState {
   projectCode?: Record<string, string>;
   projectMetadata?: ProjectMetadata;
   error?: string;
+  waitingConfirm?: boolean;
 }
 
 async function saveDecision(taskId: string, decision: Decision) {
@@ -147,7 +148,10 @@ async function decideNode(state: AgentState): Promise<AgentState> {
 
     await saveDecision(state.taskId, decision);
 
-    return { ...state, decision };
+    console.log('[decideNode] Decision made, waiting for user confirmation...');
+    await updateTaskStatus(state.taskId, 'waiting_confirm');
+
+    return { ...state, decision, waitingConfirm: true };
   } catch (error) {
     console.error('Decision error:', error);
     return {

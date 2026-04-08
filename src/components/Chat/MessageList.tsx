@@ -1,14 +1,15 @@
 'use client';
 
-import { Message } from '@/types';
+import { Message, Decision } from '@/types';
 import ReactMarkdown from 'react-markdown';
 import CodePreview from './CodePreview';
 
 interface MessageListProps {
   messages: Message[];
+  onConfirm?: (taskId: string, decision: Decision, confirmed: boolean) => void;
 }
 
-export default function MessageList({ messages }: MessageListProps) {
+export default function MessageList({ messages, onConfirm }: MessageListProps) {
   return (
     <div className="space-y-6">
       {messages.map((message) => (
@@ -106,6 +107,23 @@ export default function MessageList({ messages }: MessageListProps) {
                     </a>
                   )}
                 </div>
+              </div>
+            )}
+
+            {message.decision && message.task_id && (
+              <div className="mt-3 flex gap-2">
+                <button
+                  onClick={() => onConfirm?.(message.task_id!, message.decision!, true)}
+                  className="px-4 py-2 bg-cta text-primary font-medium rounded-lg hover:bg-cta/80 transition-colors cursor-pointer"
+                >
+                  确认继续
+                </button>
+                <button
+                  onClick={() => onConfirm?.(message.task_id!, message.decision!, false)}
+                  className="px-4 py-2 bg-secondary text-foreground font-medium rounded-lg hover:bg-secondary/80 transition-colors cursor-pointer"
+                >
+                  取消
+                </button>
               </div>
             )}
 
